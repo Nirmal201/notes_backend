@@ -29,18 +29,16 @@ app.get("/", (req, res) => {
   console.log(res);
   res.send("<h1>Hello World</h1>");
 });
+
 const generateId = () => {
   const maxId = notes.length > 0 ? Math.max(...notes.map((n) => n.id)) : 0;
   return maxId + 1;
 };
 
 app.post("/api/notes", (req, res) => {
-  // const body = res.body;
-  const body = req.IncomingMessage.body;
-  console.log("$$res:-", req);
-  // console.log("$$res.body:-", res.body);
-  console.log("$$req.IncomingMessage.body", res.IncomingMessage.body);
-  //sahil
+  console.log("\n\n\n\n", "log-nirmal", "\n");
+  console.log("$body:-", req.body);
+  const body = req.body;
   if (!body.content) {
     return res.status(400).json({
       error: "Content Missing",
@@ -52,7 +50,6 @@ app.post("/api/notes", (req, res) => {
     date: new Date(),
     id: generateId(),
   };
-  note.id = maxId + 1;
   notes = notes.concat(note);
   res.json(note);
 });
