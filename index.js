@@ -1,40 +1,9 @@
-// const http = require("http");
-
-// let notes = [
-//   {
-//     id: 1,
-//     content: "HTML is easy",
-//     date: "2019-05-30T17:30:31.098Z",
-//     important: true,
-//   },
-//   {
-//     id: 2,
-//     content: "Browser can execute only Javascript",
-//     date: "2019-05-30T18:39:34.091Z",
-//     important: false,
-//   },
-//   {
-//     id: 3,
-//     content: "GET and POST are the most important methods of HTTP protocol",
-//     date: "2019-05-30T19:20:14.298Z",
-//     important: true,
-//   },
-// ];
-
-// const app = http.createServer((req, res) => {
-//   res.writeHead(200, { "Content-Type": "application/json" });
-//   res.end(JSON.stringify(notes));
-// });
-
-// const port = 3001;
-// app.listen(port);
-// console.log(`Server running on port ${port}`);
-
 const express = require("express");
 const app = express();
-app.use(express.json());
 const cors = require("cors");
+app.use(express.json());
 app.use(cors());
+app.use(express.static("build"));
 
 let notes = [
   {
@@ -66,7 +35,12 @@ const generateId = () => {
 };
 
 app.post("/api/notes", (req, res) => {
-  const body = body.content;
+  // const body = res.body;
+  const body = req.IncomingMessage.body;
+  console.log("$$res:-", req);
+  // console.log("$$res.body:-", res.body);
+  console.log("$$req.IncomingMessage.body", res.IncomingMessage.body);
+  //sahil
   if (!body.content) {
     return res.status(400).json({
       error: "Content Missing",

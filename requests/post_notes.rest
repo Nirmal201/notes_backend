@@ -1,0 +1,10 @@
+#create-user
+post http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "content":"asda",
+  "important":true,
+  "id":6
+}
+// when using locahost, 
