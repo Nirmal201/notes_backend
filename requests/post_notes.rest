@@ -3,6 +3,6 @@ post http://localhost:3001/api/notes
 Content-Type: application/json
 
 {
-  "content":"Content 5"
+  "content":"G",
+  "important":true
 }
-// when using locahost,  

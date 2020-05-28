@@ -10,15 +10,19 @@
     "build:ui": "rm -rf build && cd /Users/nirmalpatel/Documents/github/notes && npm run build --prod && cp -r build /Users/nirmalpatel/Documents/github/node",
     "deploy": "git push heroku master",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
-    "logs:prod": "heroku logs --tail"
+    "logs:prod": "heroku logs --tail",
+    "lint": "eslint ."
   },
   "author": "Nirmal Patel",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.14"
   },
   "devDependencies": {
+    "eslint": "^7.1.0",
     "nodemon": "^2.0.3"
   }
 }
