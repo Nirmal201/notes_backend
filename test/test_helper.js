@@ -13,8 +13,14 @@ const initialNotes = [
 
 const nonExistingId = async () => {
   const note = new Note({ content: "willremovethissoon" });
+  console.log("note object casted using mongoose model - ", note);
   await note.save();
+  console.log("note object actually saved in mongoose database - ", note);
+
   await note.remove();
+  console.log("note object actually removed in mongoose database - ", note);
+
+  console.log("Is the _id property exists.... - ", note._id.toString());
 
   return note._id.toString();
 };
