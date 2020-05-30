@@ -8,14 +8,13 @@ const Note = require("../models/note");
 beforeEach(async () => {
   await Note.deleteMany({});
 
-  let noteObject = new Note(helper.initialNotes[0]);
-  await noteObject.save();
-
-  noteObject = new Note(helper.initialNotes[1]);
-  await noteObject.save();
+  for (let note of helper.initialNotes) {
+    let noteObject = new Note(note);
+    await noteObject.save();
+  }
 });
 
-test("Notes are returned as json ", async () => {
+test("notes are returned as json ", async () => {
   await api
     .get("/api/notes")
     .expect(200)
@@ -23,13 +22,15 @@ test("Notes are returned as json ", async () => {
 });
 
 test("all notes are returned", async () => {
-  const res = await api.get("/api/notes");
-  expect(res.body).toHaveLength(helper.initialNotes.length);
+  const response = await api.get("/api/notes");
+
+  expect(response.body).toHaveLength(helper.initialNotes.length);
 });
 
-test("a specific note is within the returnd notes", async () => {
-  const res = await api.get("/api/notes");
-  const contents = res.body.map((r) => r.content);
+test("a specific note is within the returned notes", async () => {
+  const response = await api.get("/api/notes");
+
+  const contents = response.body.map((r) => r.content);
   expect(contents).toContain("Browser can execute only Javascript");
 });
 
