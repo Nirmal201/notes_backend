@@ -3,7 +3,7 @@ mongoose.set("useFindAndModify", false);
 
 const noteSchema = new mongoose.Schema({
   content: { type: String, minlength: 3, required: true },
-  date: { type: Date, required: true },
+  date: Date,
   important: Boolean,
 });
 
