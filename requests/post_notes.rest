@@ -1,8 +1,9 @@
 #create-user
-post http://localhost:3001/api/notes
+post http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-  "content":"G",
-  "important":true
+  "username":"one",
+  "name":"user one",
+  "password":"1314141sd",
 }
