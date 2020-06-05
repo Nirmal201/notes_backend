@@ -145,7 +145,8 @@ describe("when there is initially one user in db", () => {
       password: "hellouser",
     };
 
-    const result = await (await api.post("/api/users"))
+    const result = await api
+      .post("/api/users")
       .send(newUser)
       .expect(400)
       .expect("Content-Type", /application\/json/);
@@ -153,7 +154,7 @@ describe("when there is initially one user in db", () => {
     expect(result.body.error).toContain("`username` to be unique");
 
     const usersAtEnd = await helper.usersInDb();
-    expect(usersAtEnd).toBe(usersAtStart.length);
+    expect(usersAtEnd).toHaveLength(usersAtStart.length);
   });
 });
 

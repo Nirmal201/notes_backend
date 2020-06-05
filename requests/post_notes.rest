@@ -1,9 +1,9 @@
 #create-user
-post http://localhost:3001/api/users
+POST  http://localhost:3001/api/notes
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5pcm1hbCIsImlkIjoiNWVkNzhjYTM2NDU1ODU0YWNmMDNkMWQ3IiwiaWF0IjoxNTkxMzU0Nzk4fQ.mMaOubp-qmwGvITb-wOaey-8UNNlhlVhBMnTjrqBpjs
 
 {
-  "username":"one",
-  "name":"user one",
-  "password":"1314141sd",
+  "content":"Notes 4",
+  "important":true
 }
