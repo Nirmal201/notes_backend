@@ -7,7 +7,7 @@
     "start": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=development nodemon index.js",
     "test": "NODE_ENV=test jest --verbose --runInBand",
-    "build:ui": "rm -rf build && cd /Users/nirmalpatel/Documents/github/notes && npm run build --prod && cp -r build /Users/nirmalpatel/Documents/github/node",
+    "build:ui": "rm -rf build && cd /Users/nirmalpatel/Documents/github/Notes/frontend-notes && npm run build --prod && cp -r build /Users/nirmalpatel/Documents/github/Notes/backend-notes",
     "deploy": "git push heroku master",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
     "logs:prod": "heroku logs --tail",
